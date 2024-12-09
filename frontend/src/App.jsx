@@ -21,6 +21,8 @@ function App() {
     "artificial-intelligence-engineer",
     "devops-engineer",
     "data-scientist",
+    "mobile-engineer",
+    "machine-learning-engineer"
   ]);
   const [companies, setCompanies] = useState([]);
 
@@ -58,11 +60,11 @@ function App() {
               variant="outlined"
             />
           )}
-          onChange={(event, newValue) => {
+          // onChange={(event, newValue) => {
             // if (newValue && !options.includes(newValue)) {
               // setOptions((prev) => [...prev, newValue]);
             // }
-          }}
+          // }}
         />
         <Button
           variant="contained"

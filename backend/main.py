@@ -6,10 +6,10 @@ from bs4 import BeautifulSoup
 
 app = FastAPI()
 
-# Add CORS middleware
+# CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust for specific domains in production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -19,9 +19,7 @@ class ScrapeRequest(BaseModel):
     keyword: str
 
 def scrape_jobs(keyword: str):
-    """
-    Scrape jobs from Wellfound for a specific keyword.
-    """
+    # keyword for url
     url = f"https://wellfound.com/role/{keyword}"
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
@@ -50,13 +48,12 @@ def scrape_jobs(keyword: str):
         for job_listing in soup.find_all("span", class_="pl-1 text-xs"):
             additional_details.append(job_listing.text.strip())
 
-        # Extract and process image links
+        # Image links
         for img_tag in soup.find_all("img", class_="rounded-2xl object-contain"):
             image_url = img_tag.get("src")
             if image_url and "https" in image_url:
                 images.append(image_url.split("https://", 1)[-1])
 
-        # Combine extracted data into jobs
         jobs = []
         for company, position, detail, image in zip(companies, positions, additional_details, images):
             jobs.append({
@@ -75,9 +72,7 @@ def scrape_jobs(keyword: str):
 
 @app.post("/scrape")
 def scrape_and_fetch(request: ScrapeRequest):
-    """
-    Scrape jobs and return the data in one request.
-    """
+    # scraping jobs
     jobs = scrape_jobs(request.keyword)
     if not jobs:
         raise HTTPException(status_code=404, detail="No jobs found for the given keyword.")

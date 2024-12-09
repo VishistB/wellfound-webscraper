@@ -14,13 +14,14 @@ export default function TopNav() {
     >
       {/* <Typography variant='h4' color='#ff622e'> WELLSCRAPER </Typography> */}
       <Stack direction="row" alignItems="center" justifyContent="center">
-        <img src={WLogo} style={{width:"80px", margin:"0rem 0.5rem"}} />
+        <img src={WLogo} style={{width:"80px", margin:"0rem 2rem"}} />
       </Stack>
       <Typography
         variant="h4"
         color="#ff622e"
         fontWeight="bold"
         // fontFamily="Roboto Condensed"
+        sx={{margin:"0 2rem"}}
       >
         WELLSCRAPER
       </Typography>
