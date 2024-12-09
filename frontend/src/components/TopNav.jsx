@@ -1,7 +1,7 @@
 import React from "react";
 // import {Stack} from '@mui/material'
-import Stack from "@mui/material/Stack";
-import { Button, Typography } from "@mui/material";
+// import Stack from "@mui/material/Stack";
+import { Button, Typography, Stack } from "@mui/material";
 import WLogo from "../assets/W_logo_alt.png";
 
 export default function TopNav() {
@@ -24,7 +24,8 @@ export default function TopNav() {
       >
         WELLSCRAPER
       </Typography>
-      <Button color="error" variant="contained"><Typography variant="button" sx={{color:""}}>Logout</Typography></Button>
+      {/* <Stack></Stack> */}
+      {/* <Button color="error" variant="contained"><Typography variant="button" sx={{color:""}}>Logout</Typography></Button> */}
     </Stack>
   );
 }
